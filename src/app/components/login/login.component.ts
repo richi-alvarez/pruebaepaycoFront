@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute
   ) {
-    this.page_title = "Identificaté";
+    this.page_title = "iniciar sección";
     this.user = new User(1, '',0, '', 0, '', '');
    }
 
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     this.logout();
   }
   onSubmit(form){
+    console.log('submit')
     this._userService.signup(this.user).subscribe(
       response => {
           if(!response.status || response.status !='error'){

@@ -1,0 +1,65 @@
+<div class="col-md-12 mt-3">
+    <h1>{{page_title}}</h1>
+    <hr>
+       <div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success' && status2 != 'success'">
+         {{messagge}}
+         en caso de que no lo reciba por favor ingresar este token para continuar con el pago<strong> {{tokenPay}}</strong>
+         <hr>
+         <form class="col-md-5 ml-0 pl-0" #whalletConfirm="ngForm" (ngSubmit)="onSubmit(whalletConfirm)">
+        <div class="form-group"> 
+            <label for="token">token</label>
+            <input type="text" name="token" #name="ngModel" [(ngModel)]="whallet.token" class="form-control"  required pattern="[a-zA-Z]+" />
+          
+        </div>
+         
+        <input type="submit" value="Aceptar" class="btn btn-success"  />
+         </form>
+    </div>
+     <div class="alert alert-success col-md-5 mt-3" *ngIf="status2 == 'success'">
+            se realizo el pago correctamente
+     </div>
+     <div class="alert alert-danger col-md-5 mt-3" *ngIf="status2 == 'error'">
+        No se pude el pago, valida los datos por favor y que cuentes con el saldo!
+    </div>
+
+    <div class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error'">
+        No se pude consultar el saldo, por favor validar los datos enviados!
+    </div>
+
+    <form class="col-md-5 ml-0 pl-0" #whalletPago="ngForm" (ngSubmit)="onSubmit(whalletPago)">
+
+        <div class="form-group"> 
+            <label for="documento">numero de Documento</label>
+            <input type="text" name="documento" #documento="ngModel" [(ngModel)]="whallet.documento" class="form-control"  required pattern="[0-9]{10}" />
+            <small *ngIf="!documento.valid && documento.touched" class="invalid-feedback d-block" >
+            EL documento no es valido
+            </small>
+        </div>
+
+        <div class="form-group"> 
+            <label for="celular">celular</label>
+            <input type="text" name="celular" #celular="ngModel" [(ngModel)]="whallet.celular" class="form-control"  required pattern="[0-9]{10}" />
+            <small *ngIf="!celular.valid && celular.touched" class="invalid-feedback d-block" >
+            EL celular no es valido
+            </small>
+        </div>
+
+        
+        <div class="form-group"> 
+            <label for="saldo">ingresar saldo</label>
+            <input type="saldo" name="saldo" #saldo="ngModel" [(ngModel)]="whallet.saldo" class="form-control"  requiredpattern="[0-9]{10}" />
+            <small *ngIf="!saldo.valid && saldo.touched" class="invalid-feedback d-block" >
+            el saldo es requerido
+            </small>
+        </div>
+
+
+        <input type="submit" value="Aceptar" class="btn btn-success" [disabled]="whalletPago.invalid" />
+
+    </form>
+
+
+    
+
+
+</div>

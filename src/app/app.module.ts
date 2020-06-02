@@ -9,6 +9,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { RegisterComponent } from './components/register/register.component';
+import { WhalletRecargaComponent } from './components/whallet-recarga/whallet-recarga.component';
+import { WhalletConsultaComponent } from './components/whallet-consulta/whallet-consulta.component';
+import { WhalletPagarComponent } from './components/whallet-pagar/whallet-pagar.component';
+import { IdentityGuard } from './services/identity.guard';
+import { UserService } from './services/user.service';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +22,10 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     HomeComponent,
     ErrorComponent,
-    RegisterComponent
+    RegisterComponent,
+    WhalletRecargaComponent,
+    WhalletConsultaComponent,
+    WhalletPagarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +34,9 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    IdentityGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,10 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3">
 
+    <a class="navbar-brand" [routerLink]="['/inicio']">
+        <img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/logos_clientes/11736_1482267755.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,10 +15,10 @@
           <a class="nav-link" [routerLink]="['/inicio']">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" [routerLink]="['/recargar']">recarga</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link disabled" [routerLink]="['/consulta']">consulta</a>
         </li>
       </ul>
 

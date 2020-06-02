@@ -1,0 +1,33 @@
+<div class="col-md-12 mt-3">
+    <h1>{{page_title}}</h1>
+    <hr>
+    <div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+        su saldo es {{saldo}}
+    </div>
+
+    <div class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error'">
+        No se pude consultar el saldo, por favor validar los datos enviados!
+    </div>
+
+    <form class="col-md-5 ml-0 pl-0" #whalletConsultar="ngForm" (ngSubmit)="onSubmit(whalletConsultar)">
+
+        <div class="form-group"> 
+            <label for="documento">numero de Documento</label>
+            <input type="text" name="documento" #documento="ngModel" [(ngModel)]="whallet.documento" class="form-control"  required pattern="[0-9]{10}" />
+            <small *ngIf="!documento.valid && documento.touched" class="invalid-feedback d-block" >
+            EL documento no es valido
+            </small>
+        </div>
+
+        <div class="form-group"> 
+            <label for="celular">celular</label>
+            <input type="text" name="celular" #celular="ngModel" [(ngModel)]="whallet.celular" class="form-control"  required pattern="[0-9]{10}" />
+            <small *ngIf="!celular.valid && celular.touched" class="invalid-feedback d-block" >
+            EL celular no es valido
+            </small>
+        </div>
+
+        <input type="submit" value="Aceptar" class="btn btn-success" [disabled]="whalletConsultar.invalid" />
+
+    </form>
+</div>
